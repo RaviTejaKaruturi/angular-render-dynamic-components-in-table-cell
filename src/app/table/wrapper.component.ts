@@ -18,7 +18,9 @@ import {
 })
 export class WrapperComponent implements OnInit, OnChanges {
   @Input() comp: any;
-  @Input() obj: any;
+  @Input() row: any;
+  @Input() col: string;
+
   @ViewChild('vcr', { static: true, read: ViewContainerRef })
   vcr: ViewContainerRef;
   cRef: ComponentRef<any>;
@@ -32,13 +34,14 @@ export class WrapperComponent implements OnInit, OnChanges {
     viewContainerRef.clear();
 
     this.cRef = viewContainerRef.createComponent<any>(componentFactory);
-    this.cRef.instance.data = this.obj;
+    this.cRef.instance.row = this.row;
+    this.cRef.instance.col = this.col;
   }
 
   ngOnChanges() {
     console.log('Wrapper - ngOnChanges');
     if (this.cRef) {
-      this.cRef.instance.data = this.obj;
+      this.cRef.instance.row = this.row;
       // useful if onpush change detection strategy is used
       this.cRef.injector.get(ChangeDetectorRef).markForCheck();
     }

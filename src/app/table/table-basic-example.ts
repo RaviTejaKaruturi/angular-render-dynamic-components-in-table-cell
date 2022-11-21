@@ -22,7 +22,7 @@ export class TableBasicExample {
   ngOnInit() {}
 
   trackTask(index: number, item: PeriodicElement): number {
-    return item.position;//`${item.position}`;
+    return item.position; //`${item.position}`;
   }
 
   ngOnChanges() {

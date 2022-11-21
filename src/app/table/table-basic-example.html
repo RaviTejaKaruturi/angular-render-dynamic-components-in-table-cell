@@ -24,8 +24,9 @@
     <th mat-header-cell *matHeaderCellDef>Weight</th>
     <td mat-cell *matCellDef="let element">
       <app-wrapper
-        [obj]="element"
+        [row]="element"
         [comp]="element?.weight.component"
+        [col]="'Weight'"
       ></app-wrapper>
     </td>
   </ng-container>
